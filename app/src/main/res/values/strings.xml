@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name" translatable="false">GR_demo</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="mail">Email</string>
+    <string name="user_fullname_format" translatable="false">%1$s %2$s</string>
+    <string name="network_error">Network error</string>
+    <string name="unknown_error">Unknown error</string>
+    <string name="retry">Retry</string>
+    <string name="done">Done</string>
+    <string name="content_desc_user_list_avatar">User\'s avatar in list</string>
+    <string name="content_desc_icon_mail">Icon mail</string>
+    <string name="content_desc_user_detail_avatar">User\'s avatar in detail</string>
+</resources>

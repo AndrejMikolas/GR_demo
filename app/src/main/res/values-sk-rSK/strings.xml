@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="name">Meno</string>
+    <string name="surname">Priezvisko</string>
+    <string name="mail">Mail</string>
+    <string name="network_error">Chyba pripojenia</string>
+    <string name="unknown_error">Neznáma chyba</string>
+    <string name="retry">Opakovať</string>
+    <string name="done">Hotovo</string>
+    <string name="content_desc_user_list_avatar">Avatar užívateľa v zozname</string>
+    <string name="content_desc_icon_mail">Ikona mailu</string>
+    <string name="content_desc_user_detail_avatar">Avatar užívateľa v detaile</string>
+</resources>
