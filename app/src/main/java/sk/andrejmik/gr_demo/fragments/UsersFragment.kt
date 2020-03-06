@@ -129,6 +129,7 @@ class UsersFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(UsersViewModel::class.java)
         initAdapter()
+        initSnacks()
         initSwipeToRefresh()
     }
 
@@ -141,7 +142,10 @@ class UsersFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener
             snackNetworkError.show()
         } else
         {
-            snackNetworkError.dismiss()
+            if (snackNetworkError != null)
+            {
+                snackNetworkError.dismiss()
+            }
         }
     }
 
@@ -154,7 +158,10 @@ class UsersFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener
             snackUnknownError.show()
         } else
         {
-            snackUnknownError.dismiss()
+            if (snackNetworkError != null)
+            {
+                snackUnknownError.dismiss()
+            }
         }
     }
 
@@ -174,6 +181,14 @@ class UsersFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener
         viewModel.usersList.observe(viewLifecycleOwner, Observer { userAdapter.submitList(it) })
         viewModel.getInitLoadEvent().observe(viewLifecycleOwner, initLoadObserver)
         viewModel.getAfterLoadEvent().observe(viewLifecycleOwner, afterLoadObserver)
+    }
+
+    private fun initSnacks()
+    {
+        snackNetworkError = Snackbar.make(swipe_container, resources.getString(R.string.network_error), Snackbar.LENGTH_INDEFINITE)
+        snackNetworkError.setAction(resources.getString(R.string.retry)) { viewModel.retry() }
+        snackUnknownError = Snackbar.make(swipe_container, resources.getString(R.string.unknown_error), Snackbar.LENGTH_INDEFINITE)
+        snackUnknownError.setAction(resources.getString(R.string.retry)) { viewModel.retry() }
     }
 
     private fun initSwipeToRefresh()

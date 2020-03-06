@@ -93,7 +93,16 @@ class UserDetailFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this, UserDetailViewModelFactory(userId!!))[UserDetailViewModel::class.java]
         swipe_container.setOnRefreshListener(this)
+        initSnacks()
         prepareObservers()
+    }
+
+    private fun initSnacks()
+    {
+        snackNetworkError = Snackbar.make(swipe_container, resources.getString(R.string.network_error), Snackbar.LENGTH_INDEFINITE)
+        snackNetworkError.setAction(resources.getString(R.string.retry), clickRetryLoadListener)
+        snackUnknownError = Snackbar.make(swipe_container, resources.getString(R.string.unknown_error), Snackbar.LENGTH_INDEFINITE)
+        snackUnknownError.setAction(resources.getString(R.string.retry), clickRetryLoadListener)
     }
 
     private fun prepareObservers()
